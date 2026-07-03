@@ -1,0 +1,22 @@
+name: GitlabSync
+ 
+on:
+  - push
+  - fork
+ 
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    name: Git Repo Sync
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+    - uses: KaranB2010/gitlab-github-sync@main
+      with:
+        # Such as https://github.com/wangchucheng/git-repo-sync.git
+        target-url: https://git.ti2.in/odoo-dev-team/demo/recording.git
+        # Such as wangchucheng
+        target-username: karan.bk
+          # You can store token in your project's 'Setting > Secrets' and reference the name here. Such as ${{ secrets.ACCESS\_TOKEN }}
+        target-token: 6B9S6vFdztooHLXFpTTr
